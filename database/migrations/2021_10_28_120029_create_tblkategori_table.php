@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblkomentar extends Migration
+class CreateTblkategoriTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTblkomentar extends Migration
      */
     public function up()
     {
-        Schema::create('tblkomentar', function (Blueprint $table) {
+        Schema::create('tblkategori', function (Blueprint $table) {
             $table->id();
-            $table->string("user_id");
-            $table->string("isi_komentar");
+            $table->string("nama_kategori");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateTblkomentar extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tblkomentar');
+        Schema::dropIfExists('tblkategori');
     }
 }

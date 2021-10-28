@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblkategori extends Migration
+class CreateTblkomentarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateTblkategori extends Migration
      */
     public function up()
     {
-        Schema::create('tblkategori', function (Blueprint $table) {
+        Schema::create('tblkomentar', function (Blueprint $table) {
             $table->id();
-            $table->string("nama_kategori");
+            $table->foreignId("user_id")->constrained();
+            $table->string("isi_komentar");
+            $table->unsignedBigInteger("berita_id");
+            $table->foreign("berita_id")->references("id")->on("tblberita");
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateTblkategori extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tblkategori');
+        Schema::dropIfExists('tblkomentar');
     }
 }

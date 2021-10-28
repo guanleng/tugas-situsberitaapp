@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblberitaTalbe extends Migration
+class CreateTblberitaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateTblberitaTalbe extends Migration
      */
     public function up()
     {
-        Schema::create('tblberita_talbe', function (Blueprint $table) {
+        Schema::create('tblberita', function (Blueprint $table) {
             $table->id();
             $table->string("judul");
-            $table->string("isi");
-            $table->string("kategori_id");
-            $table->string("user_id");
+            $table->text("isi");
+            
+            $table->unsignedBigInteger("kategori_id");
+            $table->foreign("kategori_id")->references("id")->on("tblkategori");
+            
+            $table->foreignId("user_id")->constrained();
+            
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateTblberitaTalbe extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tblberita_talbe');
+        Schema::dropIfExists('tblberita');
     }
 }
