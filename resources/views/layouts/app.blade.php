@@ -74,6 +74,8 @@
                 </div>
             </div>
         </nav>
+        
+        @yield('navbar-kategori')
 
         <main class="py-4">
             @yield('content')

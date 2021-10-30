@@ -9,4 +9,16 @@ class Berita extends Model
 {
     use HasFactory;
     protected $table = "tblberita";
+    
+    
+    /**
+     * Get the user that owns the Berita
+     * 
+     * @return \Illuminate\Database\Relations\BelongsTo
+     */
+    
+    public function kategori()
+    {
+     return $this->belongsTo(Kategori:: class,'kategori_id', 'id');
+    }
 }

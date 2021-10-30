@@ -13,7 +13,7 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
-        \Schema::disableForeignKeyConstraints();
+        
         \App\Models\Kategori::truncate();
         \App\Models\Kategori::insert([
             ["nama_kategori" => "News"],
@@ -23,6 +23,6 @@ class KategoriSeeder extends Seeder
             ["nama_kategori" => "Edukasi"],
             
         ]);
-        \Schema::enableForeignKeyConstraints();
+        
     }
 }
