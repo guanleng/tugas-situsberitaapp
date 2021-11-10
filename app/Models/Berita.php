@@ -10,6 +10,7 @@ class Berita extends Model
     use HasFactory;
     protected $table = "tblberita";
     
+    protected $fillable = ["kategori_id", "judul", "isi","user_id"];
     
     /**
      * Get the user that owns the Berita
